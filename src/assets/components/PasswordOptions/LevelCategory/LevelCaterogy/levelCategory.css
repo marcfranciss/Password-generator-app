@@ -1,0 +1,67 @@
+.level-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 2rem;
+  background-color: var(--dark-gray-900);
+}
+
+.category-text {
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+.level-text {
+  color: var(--white);
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+.levels-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.level-box {
+  width: 10px;
+  height: 28px;
+  border: 2px solid var(--white);
+  position: relative;
+}
+.level-box::before {
+  content: "";
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+[data-level="tooWeak"] ~ .level-box:nth-child(2) {
+  background-color: var(--red);
+  border: none;
+}
+[data-level="weak"] ~ .level-box:nth-child(-n + 3) {
+  background-color: var(--orange);
+  border: none;
+  &::before {
+    filter: blur(3px);
+    background-color: var(--orange);
+  }
+}
+[data-level="medium"] ~ .level-box:nth-child(-n + 4) {
+  background-color: var(--yellow);
+  border: none;
+  &::before {
+    filter: blur(5px);
+    background-color: var(--yellow);
+  }
+}
+[data-level="strong"] ~ .level-box:nth-child(-n + 5) {
+  background-color: var(--neon-green);
+  border: none;
+  &::before {
+    filter: blur(10px);
+    background-color: var(--neon-green);
+  }
+}

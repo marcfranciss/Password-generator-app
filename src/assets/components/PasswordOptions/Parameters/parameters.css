@@ -1,0 +1,38 @@
+.parameters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 2px solid var(--white);
+  position: relative;
+  margin-right: 1.5rem;
+  &::after {
+    content: "✓";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -2px;
+    left: -2px;
+    background-color: var(--neon-green);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    color: var(--dark-gray-900);
+  }
+}
+input[type="checkbox"]:not(:checked)::after {
+  display: none;
+}
+
+label.param-text {
+  color: var(--white);
+}

@@ -1,0 +1,69 @@
+.char-len-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.char-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.char-text {
+  color: var(--white);
+}
+
+.char-num {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  min-width: 2ch;
+  max-width: 40%;
+  max-height: 31px;
+  font-family: "JetBrains Mono", monospace;
+  text-align: right;
+  color: var(--neon-green);
+}
+.char-num::placeholder {
+  color: hsl(126, 30%, 98%);
+}
+
+/* Reseting the style of input[type=range] to have custom style */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+}
+
+/* New style for the track */
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  background: var(--dark-gray-900);
+  height: 0.5rem;
+}
+/* New style for the track */
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: var(--white);
+  cursor: grab;
+  background-size: cover;
+  /* progress/fill trick */
+  /* box-shadow: -476px 0 0 470px var(--neon-green); */
+}
+input[type="range"]::-moz-range-progress {
+  background: var(--neon-green);
+  height: 8px;
+}

@@ -1,0 +1,51 @@
+.generate-btn {
+  all: unset;
+  border: none;
+  outline: none;
+  background-color: var(--neon-green);
+  width: 476px;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray-500);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+}
+
+svg {
+  margin-left: 1.5rem;
+}
+
+@media (max-width: 48rem) {
+  .generate-btn {
+    width: 311px;
+    height: 56px;
+    margin-right: 1rem;
+  }
+}
+
+.generate-btn.animate {
+  pointer-events: none;
+  background-color: var(--dark-gray-900);
+  svg {
+    animation: slideOut 2.3s ease-out forwards;
+    path {
+      fill: var(--neon-green);
+    }
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
