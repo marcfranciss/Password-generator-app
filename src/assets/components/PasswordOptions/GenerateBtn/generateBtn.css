@@ -3,7 +3,7 @@
   border: none;
   outline: none;
   background-color: var(--neon-green);
-  width: 476px;
+  width: 100%;
   height: 65px;
   display: flex;
   flex-direction: row;
@@ -14,17 +14,14 @@
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
-}
-
-svg {
-  margin-left: 1.5rem;
+  svg.btn-icon {
+    margin-left: 1.5rem;
+  }
 }
 
 @media (max-width: 48rem) {
   .generate-btn {
-    width: 311px;
     height: 56px;
-    margin-right: 1rem;
   }
 }
 

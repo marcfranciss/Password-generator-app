@@ -13,6 +13,10 @@ interface PasswordContextType {
   setCharVal: (value: number) => void;
   paramVal: ParameterValues;
   setParamVal: (value: ParameterValues) => void;
+  isError: boolean;
+  setIsError: (value: boolean) => void;
+  errorText: string;
+  setErrorText: (value: string) => void;
 }
 
 const PasswordContext = createContext<PasswordContextType | undefined>(
@@ -27,6 +31,8 @@ export const PasswordProvider = ({ children }: PasswordProviderProps) => {
   const [generatedPassword, setGeneratedPassword] =
     useState<string>("P4$5W0rD!");
   const [charVal, setCharVal] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [errorText, setErrorText] = useState<string>("");
   const [paramVal, setParamVal] = useState<ParameterValues>({
     uppercase: false,
     lowercase: false,
@@ -42,6 +48,10 @@ export const PasswordProvider = ({ children }: PasswordProviderProps) => {
         setCharVal,
         paramVal,
         setParamVal,
+        isError,
+        setIsError,
+        errorText,
+        setErrorText,
       }}>
       {children}
     </PasswordContext.Provider>

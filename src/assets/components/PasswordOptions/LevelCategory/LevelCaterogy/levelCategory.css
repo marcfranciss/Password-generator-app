@@ -39,11 +39,9 @@
 }
 [data-level="tooWeak"] ~ .level-box:nth-child(2) {
   background-color: var(--red);
-  border: none;
 }
 [data-level="weak"] ~ .level-box:nth-child(-n + 3) {
   background-color: var(--orange);
-  border: none;
   &::before {
     filter: blur(3px);
     background-color: var(--orange);
@@ -51,7 +49,6 @@
 }
 [data-level="medium"] ~ .level-box:nth-child(-n + 4) {
   background-color: var(--yellow);
-  border: none;
   &::before {
     filter: blur(5px);
     background-color: var(--yellow);
@@ -59,9 +56,14 @@
 }
 [data-level="strong"] ~ .level-box:nth-child(-n + 5) {
   background-color: var(--neon-green);
-  border: none;
   &::before {
     filter: blur(10px);
     background-color: var(--neon-green);
+  }
+}
+
+@media (max-width: 600px) {
+  .level-category {
+    padding: 14px 1rem;
   }
 }

@@ -1,0 +1,29 @@
+.error-bubble {
+  position: fixed;
+  background-color: var(--neon-green);
+  padding: 1rem;
+  top: 3%;
+  border-radius: 4px;
+  max-width: 260px;
+  visibility: hidden;
+  color: var(--dark-gray-500);
+  font-weight: 700;
+  text-align: center;
+}
+
+.error-bubble.isError {
+  visibility: visible;
+  background-color: var(--red);
+  color: var(--white);
+  animation: slideDown 1.2s linear;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-50%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

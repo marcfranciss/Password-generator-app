@@ -85,9 +85,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding-block: 133px 196px;
-  padding-inline: 450px;
+  & > * {
+    max-width: 540px;
+  }
 }
 
 section {
@@ -95,4 +96,22 @@ section {
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+}
+
+@media (max-width: 64rem) {
+  main {
+    padding-block: 133px;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-block: 2rem;
+    & > * {
+      max-width: 343px;
+    }
+    #password-generator > * {
+      padding: 1rem;
+    }
+  }
 }

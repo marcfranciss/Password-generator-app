@@ -9,3 +9,12 @@ header {
     color: var(--gray);
   }
 }
+
+@media (max-width: 600px) {
+  header {
+    margin-bottom: 1rem;
+  }
+  section {
+    gap: 1rem;
+  }
+}

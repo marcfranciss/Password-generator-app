@@ -25,19 +25,20 @@ const getRandomChar = (params: any) => {
     if (params.symbols) randomizerFns.push(getRandomSymbol)
 
         if (randomizerFns.length === 0) {
-            throw new Error("At least one param must be selected")
-        }
+            throw new Error("At least one param must be selected")}
         
     const randomFunction = randomizerFns[Math.floor(Math.random() * randomizerFns.length)];
 
-  return randomFunction(); // Randomly pick one of the functions to call
+  return randomFunction();// Randomly pick one of the functions to call
 }
 export const generateRandomString = (length: number, params: any) => {
     let result = "";
+    const checkParamVal = Object.values(params).filter(
+      (val) => val === true)
 
-    if (length < 1) {
-      throw new Error("Please select the correct number of character to generate.")
-  }
+    if (length < 1) { return 'error' }
+    if (checkParamVal.length < 1) {return 'paramError'}
+
 
     for (let i = 0; i < length; i++) {
       result += getRandomChar(params);

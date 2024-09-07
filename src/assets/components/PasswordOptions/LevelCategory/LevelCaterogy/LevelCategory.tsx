@@ -15,10 +15,10 @@ export const LevelCategory = () => {
       /* Will count how may checkboxes are checked*/
       const paramsCount: number = checkParamVal.length;
       /* Will now measure the strenght of provided parametes */
-      if (charVal <= 10) {
+      if (charVal <= 6) {
         setDataLevel("tooWeak");
       }
-      if (charVal > 10) {
+      if (charVal > 6) {
         if (paramsCount <= 1) {
           setDataLevel("tooWeak");
         }
