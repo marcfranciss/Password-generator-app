@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import xIcon from "../../images/cross.svg";
 import { usePasswordContext } from "../../Context/PasswordContext";
 import "./errorBubble.css";
 export const ErrorBubble = () => {

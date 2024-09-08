@@ -4,8 +4,6 @@ import { LevelCategory } from "./LevelCategory/LevelCaterogy/LevelCategory";
 import { Parameters } from "./Parameters/Parameters";
 import "./passwordOptions.css";
 
-interface Props {}
-
 export const PasswordOptions = () => {
   return (
     <div className='options-container'>
