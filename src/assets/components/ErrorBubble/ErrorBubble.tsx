@@ -1,21 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import xIcon from "../../images/cross.svg";
 import { usePasswordContext } from "../../Context/PasswordContext";
 import "./errorBubble.css";
 export const ErrorBubble = () => {
-  const [showError, setShowError] = useState<boolean>(false);
-  const { isError, errorText, setIsError } = usePasswordContext();
+  const { isError, errorText, setIsError, isCopied, setIsCopied, copyText } =
+    usePasswordContext();
 
   useEffect(() => {
     if (isError) {
-      setShowError(true);
       setTimeout(() => {
-        setShowError(false);
         setIsError(false);
-      }, 2300);
+      }, 1800);
     }
-  }, [isError, errorText]);
+    if (isCopied) {
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 1800);
+    }
+  }, [isError, errorText, isCopied, copyText]);
   return (
-    <div className={`error-bubble ${showError && "isError"}`}>{errorText}</div>
+    <div
+      className={`error-bubble body-alpha ${
+        (isError && "isError") || (isCopied && "isCopied")
+      }`}>
+      {(isError && (
+        <>
+          <span>❎</span>
+          {errorText}
+        </>
+      )) ||
+        (isCopied && (
+          <>
+            <svg
+              // className='check-icon'
+              width='14'
+              height='12'
+              xmlns='http://www.w3.org/2000/svg'>
+              <path
+                stroke='#18171F'
+                strokeWidth='3'
+                fill='none'
+                d='M1 5.607 4.393 9l8-8'
+              />
+            </svg>
+            <strong>{copyText}</strong>
+          </>
+        ))}
+    </div>
   );
 };
 

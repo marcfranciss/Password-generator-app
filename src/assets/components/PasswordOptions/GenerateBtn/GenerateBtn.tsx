@@ -1,11 +1,17 @@
-import { useState } from "react";
 import "./generateBtn.css";
 import { generateRandomString } from "../../../utils/randomizer";
 import { usePasswordContext } from "../../../Context/PasswordContext";
 export const GenerateBtn = () => {
-  const [animate, setAnimate] = useState(false);
-  const { charVal, paramVal, setGeneratedPassword, setIsError, setErrorText } =
-    usePasswordContext();
+  const {
+    charVal,
+    paramVal,
+    setGeneratedPassword,
+    setIsError,
+    setErrorText,
+    isCopied,
+    animate,
+    setAnimate,
+  } = usePasswordContext();
 
   const handleGenerateBtn = () => {
     setAnimate(true);
@@ -27,8 +33,9 @@ export const GenerateBtn = () => {
   return (
     <button
       className={`generate-btn ${animate ? "animate" : ""}`}
-      onClick={handleGenerateBtn}>
-      GENERATE{" "}
+      onClick={handleGenerateBtn}
+      disabled={isCopied}>
+      GENERATE
       <svg
         className='btn-icon'
         width='12'

@@ -17,6 +17,12 @@ interface PasswordContextType {
   setIsError: (value: boolean) => void;
   errorText: string;
   setErrorText: (value: string) => void;
+  isCopied: boolean;
+  setIsCopied: (value: boolean) => void;
+  copyText: string;
+  setCopyText: (value: string) => void;
+  animate: boolean;
+  setAnimate: (value: boolean) => void;
 }
 
 const PasswordContext = createContext<PasswordContextType | undefined>(
@@ -33,6 +39,9 @@ export const PasswordProvider = ({ children }: PasswordProviderProps) => {
   const [charVal, setCharVal] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
   const [errorText, setErrorText] = useState<string>("");
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [copyText, setCopyText] = useState<string>("");
+  const [animate, setAnimate] = useState(false);
   const [paramVal, setParamVal] = useState<ParameterValues>({
     uppercase: false,
     lowercase: false,
@@ -52,6 +61,12 @@ export const PasswordProvider = ({ children }: PasswordProviderProps) => {
         setIsError,
         errorText,
         setErrorText,
+        isCopied,
+        setIsCopied,
+        copyText,
+        setCopyText,
+        animate,
+        setAnimate,
       }}>
       {children}
     </PasswordContext.Provider>

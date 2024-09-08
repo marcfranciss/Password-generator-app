@@ -1,9 +1,26 @@
 import "./charLength.css";
 import { usePasswordContext } from "../../../Context/PasswordContext";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 export const CharLength = () => {
   const { charVal, setCharVal } = usePasswordContext();
+  const [rangeVal, setRangeVal] = useState<number>(0);
+
+  const style = {
+    "--min": 0,
+    "--max": 20,
+    "--val": rangeVal,
+  } as React.CSSProperties;
+
+  // useEffect(() => {
+  //   const rangeInput = document.querySelector("[type=range]");
+  //   document.documentElement.style.setProperty("--val", rangeVal.toString());
+  // }, [rangeVal]);
+  const handleRange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setCharVal(Number(value));
+    setRangeVal(+value);
+  };
   return (
     <div className='char-len-container'>
       <div className='char-container'>
@@ -17,9 +34,8 @@ export const CharLength = () => {
         min={0}
         max={20}
         value={charVal}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setCharVal(Number(e.target.value))
-        }
+        onChange={handleRange}
+        style={style}
       />
     </div>
   );

@@ -32,6 +32,10 @@
 
 /* Reseting the style of input[type=range] to have custom style */
 #char-range {
+  --dim: 1.5em;
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--val) - var(--min)) / var(--range));
+  --sx: calc((0.5 * var(--dim)) + (var(--ratio) * (100% - var(--dim))));
   -webkit-appearance: none;
   appearance: none;
   border: none;
@@ -39,19 +43,26 @@
   cursor: pointer;
   width: 100%;
   background: var(--dark-gray-900);
+  background: transparent;
   height: 8px;
 }
 
+/* Range style for Chrome */
 /* New style for the track */
-#char-range::-webkit-slider-runnable-track,
-#char-range::-moz-range-track {
+#char-range::-webkit-slider-runnable-track {
+  position: relative;
+  /* background-color: green; */
+  height: 8px;
   width: 100%;
-  background: var(--dark-gray-900);
-  height: 0.5rem;
+  background: linear-gradient(var(--neon-green), var(--neon-green)) 0 /
+    var(--sx) 100% no-repeat var(--dark-gray-900);
 }
+
 /* New style for the track */
 #char-range::-webkit-slider-thumb {
   -webkit-appearance: none;
+  top: -8px;
+  position: relative;
   border: none;
   height: 28px;
   width: 28px;
@@ -59,6 +70,13 @@
   background-color: var(--white);
   cursor: grab;
   background-size: cover;
+  left: -2px;
+}
+/* Range style for Mozilla */
+#char-range::-moz-range-track {
+  width: 100%;
+  background: var(--dark-gray-900);
+  height: 0.5rem;
 }
 #char-range::-moz-range-thumb {
   -webkit-appearance: none;

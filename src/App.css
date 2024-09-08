@@ -115,3 +115,12 @@ section {
     }
   }
 }
+
+*:disabled {
+  background-color: transparent;
+  color: var(--gray) !important;
+  cursor: default !important;
+  svg > path {
+    fill: var(--gray) !important;
+  }
+}

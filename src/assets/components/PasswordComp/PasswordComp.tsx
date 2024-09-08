@@ -1,18 +1,18 @@
 import "./passwordComp.css";
 import { usePasswordContext } from "../../Context/PasswordContext";
-import { useState } from "react";
 
 export const PasswordComp = () => {
-  const [isCopied, setIsCopied] = useState<boolean>(false);
-  const { generatedPassword } = usePasswordContext();
+  const { generatedPassword, isCopied, setIsCopied, setCopyText, animate } =
+    usePasswordContext();
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(generatedPassword);
       setIsCopied(true);
+      setCopyText(`Copied: ${generatedPassword}`);
       setTimeout(() => {
         setIsCopied(false);
-      }, 1500);
+      }, 2300);
     } catch (err) {
       console.error(err);
       setIsCopied(false);
@@ -21,10 +21,7 @@ export const PasswordComp = () => {
   return (
     <div className='password-container'>
       <h2 className='password heading-alpha'>{generatedPassword}</h2>
-      <button className='btn-copy' onClick={handleCopy}>
-        <span className='tooltip-text'>
-          {isCopied ? `Copied: ${generatedPassword}` : "Copy to clipboard"}
-        </span>
+      <button className='btn-copy' onClick={handleCopy} disabled={animate}>
         {isCopied ? (
           <svg
             className='check-icon'
